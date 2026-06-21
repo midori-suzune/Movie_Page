@@ -1,22 +1,29 @@
+import type {Movie} from "../../types/movie.ts";
+import styles from './MovieCard.module.css'
 
-
-export function MovieCard( {movie } ){
+export function MovieCard( { movie } : { movie: Movie }  ) {
 
     function onFavouriteClick(){
         alert("Favourite clicked");
     }
-
     return (
-        <div className="movie-card">
-            <div className="moive-poster">
-                <img src={movie.url} alt={movie.title} />
-                <div className="movie-overlay">
-                    <button className="favorite-btn" onClick={onFavouriteClick}>(｡♥‿♥｡)</button>
+        <div className={styles.movieCard}>
+            <div className={styles.moviePoster}>
+                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                <div className={styles.movieOverlay}>
+                    <button
+                        type="button"
+                        className={styles.favoriteBtn}
+                        onClick={onFavouriteClick}
+                        aria-label={`Add ${movie.title} to favorites`}
+                    >
+                        ♥
+                    </button>
                 </div>
             </div>
-            <div className="movie-info">
+            <div className={styles.movieInfo}>
                 <h3>{movie.title}</h3>
-                <p>{movie.releaseDate}</p>
+                <p>{movie.release_date}</p>
             </div>
         </div>
     )
