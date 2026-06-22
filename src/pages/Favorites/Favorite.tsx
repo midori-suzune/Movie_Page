@@ -1,10 +1,20 @@
+import {type MovieContextValue, useMoviesContext} from "../../context/MovieContext.ts";
+import type {Movie} from "../../types/movie.ts";
+import {MovieCard} from "../../components/MovieCard/MovieCard.tsx";
+import styles from "../Home/Home.module.css";
 
-
-export function Favourite(){
-    return(
-        <div className={"favorite-empty"}>
-            <h2> No Favorite Movies Yet</h2>
-            <p>Start adding movies to yours favorites and they will appear hear</p>
+export function Favourite() {
+    const favorite: MovieContextValue = useMoviesContext();
+    const favoriteList: Movie[] = favorite.favorite;
+    return (
+        <div className={styles.moviesGrid}>
+            {
+                favoriteList.map((item: Movie) => {
+                    return (
+                        <MovieCard movie={item} key={item.id}></MovieCard>
+                    )
+                })
+            }
         </div>
     )
 }
