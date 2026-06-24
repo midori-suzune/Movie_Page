@@ -1,0 +1,39 @@
+.container {
+    background-color: #303030;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .content {
+    background-color: #2b2738;
+    display: grid;
+    width: 70%;
+    height: 70%;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 15px;
+    padding: 20px 0 20px 20px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+#leftSide{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#leftSide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    /*  chọn ảnh để căng về phía giữa sau khi cắt = cover */
+    object-position: center;
+    display: block;
+}
+#rightSide{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
