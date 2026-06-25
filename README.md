@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# Movie Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movie Page is a React + TypeScript movie browsing app built with Vite. The app uses TMDB API data to show popular movies, search movies by title, and manage a local favorites list.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Browse popular movies
+- Search movies by title
+- Add and remove favorite movies
+- View favorite movies on a separate page
+- Sign in and sign up pages with shared auth layout
+- Shared root layout with navigation and footer
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- React Router
+- CSS Modules
+- TMDB API
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```txt
+src/
+  components/     Reusable UI components
+  context/        Movie favorite state and context
+  layout/         Root and auth layouts
+  pages/          App pages
+  routes/         Route definitions
+  services/       API calls
+  types/          Shared TypeScript types
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Routes
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```txt
+/movie-page           Home page
+/movie-page/favorite  Favorite movies
+/movie-page/sign-in   Sign in page
+/movie-page/sign-up   Sign up page
 ```
+
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+Run lint:
+
+```bash
+npm run lint
+```
+
+## API
+
+Movie data is loaded from [The Movie Database API](https://developer.themoviedb.org/docs).
+
+The current API key is defined in:
+
+```txt
+src/services/movieService.ts
+```
+
+For production projects, move API keys into environment variables instead of committing them directly in source code.

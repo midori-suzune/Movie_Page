@@ -1,15 +1,27 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import styles from './NavBar.module.css'
 import {FaBars, FaBookmark, FaHistory, FaSearch} from "react-icons/fa"
+import {APP_BASE_PATH, ROUTES} from "../../constants/routes.ts";
 
+import {SideMenuProps} from "../SideMenu/SideMenu.tsx";
 export function NavBar() {
+
+    const backHome= useNavigate();
+
+    function showSideMenu(){
+
+        if(sideMenu.showSideMenu){
+
+        }
+    }
     return (
         <div className={styles.headerHome}>
+            <div className={styles.container}>
             <div className={styles.leftHeader}>
-                <div className={styles.sideBarMenu}>
+                <div className={styles.sideBarMenu} onClick={showSideMenu}>
                     <FaBars></FaBars>
                 </div>
-                <div className={styles.logo}>
+                <div className={styles.logo} onClick={() => backHome(APP_BASE_PATH)}>
                     <img src='/logo-hhtq.png' alt='logo' style={{width: '83px', height: '40px'}}/>
                 </div>
                 <div id={styles.search}>
@@ -45,7 +57,8 @@ export function NavBar() {
                 </div>
             </div>
             <div className={styles.rightHeader}>
-                <Link to="sign-in">Sign In</Link>
+                <Link to={ROUTES.signIn}>Sign In</Link>
+            </div>
             </div>
         </div>
     )

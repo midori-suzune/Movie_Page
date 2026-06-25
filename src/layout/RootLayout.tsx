@@ -2,10 +2,11 @@ import {Outlet} from "react-router-dom";
 import {NavBar} from "../components/NavBar/NavBar.tsx";
 import {Fragment} from "react";
 import {Footer} from "../components/Footer/Footer.tsx";
+import {SideMenu} from "../components/SideMenu/SideMenu.tsx";
 
 export function RootLayout() {
     return (
-        <Fragment>
+        <div className={"relative"}>
             {/*
                 NavBar use shared for all pages
             */}
@@ -21,9 +22,12 @@ export function RootLayout() {
                 */}
                 <Outlet/>
             </main>
+            <SideMenu>
+
+            </SideMenu>
             <footer>
                 <Footer/>
             </footer>
-        </Fragment>
+        </div>
     );
 }
