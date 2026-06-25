@@ -2,6 +2,7 @@
 import styles from './ForgotPassword.module.css'
 import {Link} from "react-router-dom";
 import {FaArrowLeft, FaPaperPlane} from "react-icons/fa";
+import {ROUTES} from "../../constants/routes.ts";
 
 
 export function ForgotPassword() {
@@ -11,7 +12,7 @@ export function ForgotPassword() {
             <form>
                 <input type="text" placeholder="Enter your name" />
                 <div className={styles.navLink}>
-                    <Link to="../sign-in">
+                    <Link to={ROUTES.signIn}>
                         <FaArrowLeft />
                         Back to Sign In
                     </Link>

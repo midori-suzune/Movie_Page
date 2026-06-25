@@ -1,6 +1,9 @@
 import type {Movie} from "../../types/movie.ts";
 import styles from './MovieCard.module.css'
-import {type MovieContextValue, useMoviesContext} from "../../context/MovieContext.ts";
+import {type MovieContextValue} from "../../context/MovieContext.ts";
+import {useMoviesContext} from "../../hooks/useMovieContext.tsx";
+import {IMAGE_URL} from "../../constants/api.ts";
+
 
 export function MovieCard({movie}: { movie: Movie }) {
 
@@ -26,7 +29,7 @@ export function MovieCard({movie}: { movie: Movie }) {
     return (
         <div className={styles.movieCard}>
             <div className={styles.moviePoster}>
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
+                <img src={`${IMAGE_URL}${movie.poster_path}`} alt={movie.title}/>
                 <div className={styles.movieOverlay}>
                     <button
                         type="button"

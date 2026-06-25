@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import styles from './NavBar.module.css'
 import {FaBars, FaBookmark, FaHistory, FaSearch} from "react-icons/fa"
+import {ROUTES} from "../../constants/routes.ts";
 
 export function NavBar() {
     return (
@@ -45,7 +46,7 @@ export function NavBar() {
                 </div>
             </div>
             <div className={styles.rightHeader}>
-                <Link to="sign-in">Sign In</Link>
+                <Link to={ROUTES.signIn}>Sign In</Link>
             </div>
         </div>
     )
