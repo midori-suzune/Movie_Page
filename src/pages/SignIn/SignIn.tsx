@@ -11,7 +11,7 @@ export function SignIn() {
                 <input type="text" placeholder="Enter your name" />
                 <input type="password" placeholder="Enter your password" />
                 <div className={styles.navLink}>
-                    <Link to="/">Forgot Password ?</Link>
+                    <Link to="../forgot-password">Forgot Password ?</Link>
                     <button type="submit">Login</button>
                 </div>
             </form>
