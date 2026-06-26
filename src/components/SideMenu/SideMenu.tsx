@@ -1,45 +1,29 @@
-
 import styles from './SideMenu.module.css';
 import {Link} from "react-router-dom";
 import {FaChevronLeft} from "react-icons/fa";
-import {Fragment, useState} from "react";
-
-export interface SideMenuProps {
-    showSideMenu: boolean;
-    closeSideMenu: boolean;
-}
-
-const sideMenu : SideMenuProps = {
-    showSideMenu : true ,
-    closeSideMenu : false
-}
+import {Fragment} from "react";
+import {useSideMenuContext} from "../../hooks/useSideMenuContext.tsx";
 
 export function SideMenu() {
 
-  const [isClose, setClose] = useState<boolean>(false);
+    const menu = useSideMenuContext();
 
-    function closeSideBar(){
-        if(sideMenu.showSideMenu){
-            setClose(true);
-            sideMenu.closeSideMenu = true
-        }
-    }
     return (
         <Fragment>
-            {
-                !isClose &&  (
-                    <div className={styles.sideMenu}>
+            <div
+                className={`${styles.overlay} ${menu.isOpen ? styles.overlayOpen : ""}`}
+                onClick={() => menu.close(false)}
+            />
 
-                        <button type="button" onClick={closeSideBar}>
-                            <FaChevronLeft />
-                            Close
-                        </button>
-                        <Link to={''}>Home</Link>
-                        <Link to={'/'}>List</Link>
-                        <Link to={'/'}>Animated</Link>
-                    </div>
-                )
-            }
+            <div className={`${styles.sideMenu} ${menu.isOpen ? styles.open : styles.close}`}>
+                <button type="button" onClick={() => menu.close(false)}>
+                    <FaChevronLeft />
+                    Close
+                </button>
+                <Link to={''}>Home</Link>
+                <Link to={'/'}>List</Link>
+                <Link to={'/'}>Animated</Link>
+            </div>
         </Fragment>
     )
 }
