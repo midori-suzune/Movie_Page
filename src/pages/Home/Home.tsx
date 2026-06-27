@@ -35,12 +35,17 @@ export function Home() {
             {
                 !loading && error !== "" && <p>{error}</p>
             }
-
+            <iframe
+                src="https://vidsrc.to/embed/movie/1397385"
+                width="640"
+                height="360"
+                allowFullScreen>
+            </iframe>
             <div className={styles.moviesGrid}>
                 {movies.map(movie => {
                     return (
-                        searchQuery === "" ?  (<MovieCard movie={movie} key={movie.id}></MovieCard>) :
-                        <MovieCard movie={movie} key={movie.id}></MovieCard>
+                        searchQuery === "" ? (<MovieCard movie={movie} key={movie.id}></MovieCard>) :
+                            <MovieCard movie={movie} key={movie.id}></MovieCard>
                     )
                 })}
             </div>

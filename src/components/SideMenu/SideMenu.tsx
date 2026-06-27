@@ -7,22 +7,23 @@ import {useSideMenuContext} from "../../hooks/useSideMenuContext.tsx";
 export function SideMenu() {
 
     const menu = useSideMenuContext();
-
+    function menuToggle() {
+        menu.close(false);
+    }
     return (
         <Fragment>
             <div
                 className={`${styles.overlay} ${menu.isOpen ? styles.overlayOpen : ""}`}
-                onClick={() => menu.close(false)}
-            />
+                onClick={menuToggle}>
+            </div>
 
             <div className={`${styles.sideMenu} ${menu.isOpen ? styles.open : styles.close}`}>
-                <button type="button" onClick={() => menu.close(false)}>
+                <button type="button" onClick={menuToggle}>
                     <FaChevronLeft />
                     Close
                 </button>
-                <Link to={''}>Home</Link>
-                <Link to={'/'}>List</Link>
-                <Link to={'/'}>Animated</Link>
+                <Link to={''} onClick={menuToggle}>Home</Link>
+                <Link to={'./update-list'} onClick={menuToggle}>Movie Showtime</Link>
             </div>
         </Fragment>
     )
