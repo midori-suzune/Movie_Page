@@ -9,8 +9,8 @@
 .container .content {
     background-color: #292B31;
     display: grid;
-    width: 70%;
-    height: 70%;
+    width: min(1280px, calc(100% - 40px));
+    height: min(720px, calc(100vh - 40px));
     grid-template-columns: 1fr 1fr;
     border-radius: 15px;
     padding: 20px 0 20px 20px;
@@ -36,4 +36,22 @@
     display: flex;
     justify-content: center;
     padding-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .container .content {
+        width: min(420px, calc(100% - 32px));
+        height: auto;
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+    }
+
+    #leftSide {
+        display: none;
+    }
+
+    #rightSide {
+        height: auto;
+        padding-top: 0;
+    }
 }
