@@ -1,22 +1,40 @@
 .movieCard {
-    max-width: 220px;
+    position: relative;
+    width: 220px;
+    height: 270px;
+    min-width: 0;
     overflow: hidden;
-    border: 1px solid rgb(255 255 255 / 10%);
-    border-radius: 12px;
-    background: #181818;
+    border-radius: 4px;
+    background: #161616;
     color: #fff;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 24%);
-    transition: border-color 180ms ease, box-shadow 180ms ease;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 28%);
+    isolation: isolate;
+    transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .movieCard:hover {
-    border-color: rgb(255 255 255 / 22%);
-    box-shadow: 0 16px 36px rgb(0 0 0 / 40%);
+    z-index: 1;
+    box-shadow: 0 10px 24px rgb(0 0 0 / 45%);
+    transform: translateY(-3px);
 }
 
 .moviePoster {
     position: relative;
-    aspect-ratio: 3 / 4;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.moviePoster::after {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 42%;
+    background: linear-gradient(to bottom, transparent, rgb(0 0 0 / 92%));
+    content: "";
+    pointer-events: none;
 }
 
 .moviePoster img {
@@ -24,39 +42,38 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 300ms ease;
 }
 
 .movieOverlay {
     position: absolute;
+    z-index: 2;
     inset: 0;
     display: grid;
     place-items: center;
-    background: rgb(0 0 0 / 55%);
+    background: rgb(0 0 0 / 24%);
     opacity: 0;
-    transition: none;
+    transition: opacity 160ms ease;
 }
 
 .movieCard:hover .movieOverlay,
 .movieOverlay:has(:focus-visible) {
     opacity: 1;
-    transition: opacity 100ms ease;
 }
 
 .playBtn {
     display: grid;
-    width: 58px;
-    height: 58px;
+    width: 44px;
+    height: 44px;
     place-items: center;
-    padding-left: 4px;
-    border: 2px solid #fff;
+    padding: 0 0 0 3px;
+    border: 2px solid rgb(255 255 255 / 92%);
     border-radius: 50%;
-    background: rgb(229 9 20 / 90%);
+    background: rgb(0 0 0 / 58%);
     color: #fff;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
-    transform: scale(0.8);
-    transition: transform 200ms ease, background-color 180ms ease;
+    transform: scale(0.85);
+    transition: transform 180ms ease, background-color 180ms ease;
 }
 
 .movieCard:hover .playBtn,
@@ -65,83 +82,74 @@
 }
 
 .playBtn:hover {
-    background: #f6121d;
+    background: #e45b18;
 }
 
 .playBtn svg {
-    fill: #fff;
+    fill: currentColor;
 }
 
-.playBtn:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 3px;
-}
-
-
-
-.favoriteBtn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: grid;
-    width: 38px;
-    height: 38px;
-    place-items: center;
-    border: 1px solid rgb(255 255 255 / 24%);
-    border-radius: 50%;
-    background: rgb(10 10 10 / 68%);
-    color: #fff;
-    font-size: 18px;
-    line-height: 1;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(-6px);
-    backdrop-filter: blur(8px);
-    transition: opacity 180ms ease, transform 180ms ease, background-color 180ms ease;
-}
-
-.movieCard:hover .favoriteBtn,
-.favoriteBtn:focus-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.favoriteBtn:hover {
-    background: #e50914;
-}
-
+.playBtn:focus-visible,
 .favoriteBtn:focus-visible {
     outline: 2px solid #fff;
     outline-offset: 2px;
 }
 
+.favoriteBtn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 32%);
+    border-radius: 50%;
+    background: rgb(12 12 12 / 72%);
+    color: #fff;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: background-color 180ms ease, color 180ms ease;
+}
+
+.favoriteBtn:hover {
+    background: #e45b18;
+    color: #fff;
+}
+
 .movieInfo {
-    padding: 10px 15px 10px;
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 24px 9px 8px;
+    pointer-events: none;
 }
 
 .movieInfo h3 {
+    display: -webkit-box;
     overflow: hidden;
-    font-size: 15px;
-    font-weight: 650;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.movieInfo p {
-    margin: 0;
-    color: #a7a7a7;
-    font-size: 13px;
+    color: #fff;
+    font-size: clamp(11px, 1vw, 14px);
+    font-weight: 500;
+    line-height: 1.35;
+    text-shadow: 0 1px 3px rgb(0 0 0 / 85%);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 @media (hover: none) {
-    .movieOverlay,
-    .favoriteBtn {
-        opacity: 1;
+    .movieCard:hover {
+        box-shadow: 0 2px 8px rgb(0 0 0 / 28%);
         transform: none;
     }
 
     .movieOverlay {
         background: transparent;
+        opacity: 1;
         pointer-events: none;
     }
 
@@ -156,7 +164,6 @@
 
 @media (prefers-reduced-motion: reduce) {
     .movieCard,
-    .moviePoster img,
     .movieOverlay,
     .playBtn,
     .favoriteBtn {
