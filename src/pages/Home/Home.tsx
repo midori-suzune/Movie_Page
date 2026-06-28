@@ -1,49 +1,53 @@
 import {MovieCard} from "../../components/MovieCard/MovieCard.tsx";
-import {type ChangeEvent, useState} from "react";
 import styles from './Home.module.css'
-
-import * as React from "react";
 import {useMovies} from "../../hooks/useMovies.ts";
 
 export function Home() {
 
-    const [searchQuery, setSearchQuery] = useState("");
-    const {movies, loading ,error , searchMovieByTitle} = useMovies();
-
-    function setValueInput(event: ChangeEvent<HTMLInputElement>): void {
-        setSearchQuery(event.target.value);
-    }
-
-    async function handleSearch(event : React.SubmitEvent<HTMLFormElement>){
-            event.preventDefault();
-            await searchMovieByTitle(searchQuery);
-    }
-
+    const {movies , loading , error } = useMovies();
 
     return (
         <div className={styles.home}>
-            <form className={styles.searchForm} onSubmit={handleSearch}>
-                <input type={"text"} value={searchQuery} placeholder={"Search for movies...."}
-                       className={styles.searchInput}
-                       onChange={setValueInput}
-                />
-                <button type="submit" className={styles.searchButton}>Search</button>
-            </form>
-            {
-                loading && <p>Loading Movies....</p>
-            }
-            {
-                !loading && error !== "" && <p>{error}</p>
-            }
-
-            <div className={styles.moviesGrid}>
-                {movies.map(movie => {
-                    return (
-                        searchQuery === "" ?  (<MovieCard movie={movie} key={movie.id}></MovieCard>) :
-                        <MovieCard movie={movie} key={movie.id}></MovieCard>
-                    )
-                })}
+            <div className={styles.movieShowtime}>
+                <button type="button">New Update</button>
+                <button type="button">Mon</button>
+                <button type="button">Tue</button>
+                <button type="button">Wed</button>
+                <button type="button">Thu</button>
+                <button type="button">Fri</button>
+                <button type="button">Sat</button>
+                <button type="button">Sun</button>
             </div>
+
+            {/*
+                if loading === true and error = ""
+            */}
+            {loading && (
+                <div className={styles.statusMessage} role="status" aria-live="polite">
+                    <span className={styles.loadingSpinner} aria-hidden="true"/>
+                    <span>Loading movies...</span>
+                </div>
+            )}
+
+            {/*
+                loading === false and error != null
+            */}
+            {!loading && error && (
+                <p className={`${styles.statusMessage} ${styles.errorMessage}`} role="alert">
+                    {error}
+                </p>
+            )}
+
+            {/*
+                loading === false and error === null
+            */}
+            {!loading && !error && (
+                <div className={styles.moviesGrid}>
+                    {movies.map(movie => (
+                        <MovieCard movie={movie} key={movie.id}/>
+                    ))}
+                </div>
+            )}
         </div>
     )
 
