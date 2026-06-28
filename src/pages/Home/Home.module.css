@@ -7,42 +7,42 @@
     color: #fff;
 }
 
-.searchForm {
-    display: flex;
-    width: min(100%, 600px);
-    margin: 0 auto 32px;
-    gap: 12px;
+.movieShowtime {
+    display: grid;
+    width: 100%;
+    max-width: 1148px;
+    margin: 0 auto 24px;
+    grid-template-columns: repeat(8, minmax(110px, 1fr));
+    gap: 3px;
+    overflow-x: auto;
 }
 
-.searchInput {
-    min-width: 0;
-    flex: 1;
-    padding: 12px 16px;
-    border: 1px solid #444;
-    border-radius: 8px;
-    background-color: #202020;
-    color: #fff;
-    font: inherit;
-    outline: none;
-}
-
-.searchInput:focus {
-    border-color: #e50914;
-}
-
-.searchButton {
-    padding: 12px 20px;
+.movieShowtime button {
+    height: 52px;
+    padding: 0 12px;
     border: 0;
-    border-radius: 8px;
-    background-color: #e50914;
-    color: #fff;
+    border-radius: 3px;
+    background: linear-gradient(135deg, #4a4a4a 0%, #3d3d3d 100%);
+    color: #e7e7e7;
     font: inherit;
+    font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    transition: background-color 160ms ease;
 }
 
-.searchButton:hover {
-    background-color: #b20710;
+.movieShowtime button:hover {
+    background:linear-gradient(140deg, rgb(0 77 102 / .8) 0%, rgb(0 134 179 / .9) 50%, rgb(0 191 255) 100%);
+
+}
+
+.movieShowtime button:first-child:hover {
+    background: linear-gradient(135deg, #1b7ca0 0%, #3ab9ee 100%);
+}
+
+.movieShowtime button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: -3px;
 }
 
 .moviesGrid {
@@ -53,6 +53,38 @@
     grid-template-columns: repeat(auto-fit, 220px);
     justify-content: center;
     gap: 12px;
+}
+
+.statusMessage {
+    display: flex;
+    width: 100%;
+    max-width: 1148px;
+    min-height: 270px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #ddd;
+    font-size: 15px;
+}
+
+.loadingSpinner {
+    width: 22px;
+    height: 22px;
+    border: 3px solid rgb(255 255 255 / 25%);
+    border-top-color: #35afe3;
+    border-radius: 50%;
+    animation: spin 700ms linear infinite;
+}
+
+.errorMessage {
+    color: #ff8a8a;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @media (max-width: 600px) {
@@ -66,5 +98,11 @@
 
     .moviesGrid {
         gap: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loadingSpinner {
+        animation: none;
     }
 }
