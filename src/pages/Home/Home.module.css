@@ -47,7 +47,7 @@
     width: 100%;
     max-width: 1140px;
     margin: 0 auto;
-    grid-template-columns: repeat(auto-fit, 180px);
+    grid-template-columns: repeat(auto-fit, 220px);
     justify-content: center;
     gap: 10px;
 }
