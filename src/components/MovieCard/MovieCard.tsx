@@ -3,6 +3,7 @@ import styles from './MovieCard.module.css'
 import {type MovieContextValue} from "../../context/MovieContext.ts";
 import {useMoviesContext} from "../../hooks/useMovieContext.tsx";
 import {IMAGE_URL} from "../../constants/api.ts";
+import {FaPlay} from "react-icons/fa";
 
 
 export function MovieCard({movie}: { movie: Movie }) {
@@ -33,6 +34,13 @@ export function MovieCard({movie}: { movie: Movie }) {
                 <div className={styles.movieOverlay}>
                     <button
                         type="button"
+                        className={styles.playBtn}
+                        aria-label={`Play ${movie.title}`}
+                    >
+                        <FaPlay className="fas fa-play" aria-hidden="true"/>
+                    </button>
+                    <button
+                        type="button"
                         className={styles.favoriteBtn}
                         onClick={onFavoriteClick}
                         aria-label={`Add ${movie.title} to favorites`}
@@ -43,7 +51,6 @@ export function MovieCard({movie}: { movie: Movie }) {
             </div>
             <div className={styles.movieInfo}>
                 <h3>{movie.title}</h3>
-                <p>{movie.release_date}</p>
             </div>
         </div>
     )

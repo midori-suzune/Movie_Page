@@ -1,4 +1,4 @@
-import {getMovies, searchMovies} from "../services/movieService.ts";
+import {getMovies} from "../services/movieService.ts";
 import {useEffect, useState} from "react";
 import type {Movie} from "../types/movie.ts";
 
@@ -39,21 +39,6 @@ export function useMovies() {
        void loadMovies();
    }, [])
 
-
-   async function searchMovieByTitle( title : string) {
-        setLoading(true);
-        setError("");
-        try{
-            const query = title.trim().toLowerCase();
-            const result = query ? await searchMovies(query) : await getMovies()
-            setMovies(result);
-        }catch{
-            setError("Could not load movies");
-        }finally {
-            setLoading(false);
-        }
-    }
-
-    return {movies, loading ,error , searchMovieByTitle};
+    return {movies, loading ,error};
 
 }

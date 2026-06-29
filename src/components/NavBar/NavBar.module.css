@@ -23,18 +23,6 @@
     min-width: 0;
 }
 
-.sideBarMenu {
-    color: white;
-    font-size: 24px;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    cursor: pointer;
-}
-
 .logo {
     flex: 0 0 auto;
     display: flex;
@@ -139,6 +127,52 @@
     background-color: #2aaee6;
 }
 
+.menuFilter {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-top: 1px solid rgb(255 255 255 / 4%);
+    border-bottom: 1px solid #17191d;
+    background-color: #202328;
+    overflow-x: auto;
+}
+
+.menuContainer {
+    display: flex;
+    width: max-content;
+    min-width: min(100%, 1140px);
+    min-height: 44px;
+    margin: 0 auto;
+}
+
+.menuContainer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-right: 1px solid #17191d;
+    padding: 0 14px;
+    color: #e2e4e7;
+    font-size: 13px;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color 150ms ease, background-color 150ms ease;
+}
+
+.menuContainer a:first-child {
+    border-left: 1px solid #17191d;
+}
+
+.menuContainer a:hover {
+    background-color: #292d33;
+    color: #fff;
+}
+
+.menuContainer svg {
+    flex: 0 0 auto;
+    color: #f0f1f3;
+    font-size: 12px;
+}
+
 @media (max-width: 1024px) {
     .container {
         padding: 0 24px;
@@ -190,5 +224,9 @@
         display: block;
         text-align: center;
         width: 100%;
+    }
+
+    .menuContainer {
+        margin: 0;
     }
 }
