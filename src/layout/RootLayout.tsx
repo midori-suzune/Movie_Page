@@ -11,9 +11,7 @@ export function RootLayout() {
                 {/*
                 NavBar use shared for all pages
             */}
-                <nav>
-                    <NavBar/>
-                </nav>
+                <NavBar/>
                 <main>
                     {/*
                     if url is one of url in array

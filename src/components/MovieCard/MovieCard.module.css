@@ -1,7 +1,7 @@
 .movieCard {
     position: relative;
-    width: 220px;
-    height: 270px;
+    width: 180px;
+    height: 250px;
     min-width: 0;
     overflow: hidden;
     border-radius: 4px;

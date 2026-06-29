@@ -11,7 +11,7 @@ export function NavBar() {
     const openMenu = useSideMenuContext();
 
     return (
-        <div className={styles.headerHome}>
+        <nav className={styles.headerHome}>
             <div className={styles.container}>
             <div className={styles.leftHeader}>
                 <div className={styles.sideBarMenu} onClick={ () => { openMenu.open(true) }}>
@@ -56,6 +56,6 @@ export function NavBar() {
                 <Link to={ROUTES.signIn}>Sign In</Link>
             </div>
             </div>
-        </div>
+        </nav>
     )
 }
