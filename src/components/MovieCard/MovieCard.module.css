@@ -1,7 +1,7 @@
 .movieCard {
     position: relative;
-    width: 220px;
-    height: 270px;
+    width: 180px;
+    height: 250px;
     min-width: 0;
     overflow: hidden;
     border-radius: 4px;
@@ -9,13 +9,12 @@
     color: #fff;
     box-shadow: 0 2px 8px rgb(0 0 0 / 28%);
     isolation: isolate;
-    transition: transform 180ms ease, box-shadow 180ms ease;
+    transition: box-shadow 180ms ease;
 }
 
 .movieCard:hover {
     z-index: 1;
     box-shadow: 0 10px 24px rgb(0 0 0 / 45%);
-    transform: translateY(-3px);
 }
 
 .moviePoster {

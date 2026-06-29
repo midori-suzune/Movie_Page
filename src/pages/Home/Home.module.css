@@ -1,8 +1,6 @@
 .home {
     min-height: 100vh;
-    padding-top: 100px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 40px 15px 0;
     background-color: #303030;
     color: #fff;
 }
@@ -10,7 +8,7 @@
 .movieShowtime {
     display: grid;
     width: 100%;
-    max-width: 1148px;
+    max-width: 1135px;
     margin: 0 auto 24px;
     grid-template-columns: repeat(8, minmax(110px, 1fr));
     gap: 3px;
@@ -19,7 +17,6 @@
 
 .movieShowtime button {
     height: 52px;
-    padding: 0 12px;
     border: 0;
     border-radius: 3px;
     background: linear-gradient(135deg, #4a4a4a 0%, #3d3d3d 100%);
@@ -48,11 +45,11 @@
 .moviesGrid {
     display: grid;
     width: 100%;
-    max-width: 1148px;
+    max-width: 1140px;
     margin: 0 auto;
-    grid-template-columns: repeat(auto-fit, 220px);
+    grid-template-columns: repeat(auto-fit, 180px);
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .statusMessage {
